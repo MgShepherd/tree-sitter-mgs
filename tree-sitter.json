@@ -1,0 +1,35 @@
+{
+  "grammars": [
+    {
+      "name": "mgs",
+      "camelcase": "Mgs",
+      "scope": "source.mgs",
+      "file-types": [
+        ".mgs"
+      ],
+      "injection-regex": "^mgs$"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Treesitter for MGS lang",
+    "authors": [
+      {
+        "name": "Michael Shepherd",
+        "email": "michaelshep1504@gmail.com"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/MgShepherd/tree-sitter-mgs"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true
+  }
+}
