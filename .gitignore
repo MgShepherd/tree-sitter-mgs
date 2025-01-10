@@ -38,3 +38,6 @@ dist/
 *.tar.gz
 *.tgz
 *.zip
+
+# Auto generated files
+src/
