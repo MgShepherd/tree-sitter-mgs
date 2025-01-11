@@ -4,10 +4,11 @@
       "name": "mgs",
       "camelcase": "Mgs",
       "scope": "source.mgs",
-      "file-types": [
-        ".mgs"
-      ],
-      "injection-regex": "^mgs$"
+      "file-types": ["mgs"],
+      "injection-regex": "^mgs$",
+      "highlights": "queries/highlights.scm",
+      "locals": "queries/locals.scm",
+      "injections": "queries/injections.scm"
     }
   ],
   "metadata": {
