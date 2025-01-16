@@ -1,0 +1,137 @@
+=====================
+Declaration Statement
+=====================
+
+{
+	i16 test = 10;
+}
+
+---
+
+(source_file
+	(block
+		(declaration_statement
+			(datatype)
+			(identifier)
+			(assignment_operator)
+			(value_expression (numeric_value))
+		)
+	)
+)
+
+
+====================
+Assignment Statement
+====================
+
+{
+	test = 10 + 4;
+}
+
+---
+
+(source_file
+	(block
+		(assignment_statement
+			(identifier)
+			(assignment_operator)
+			(arithmetic_expression 
+					(value_expression (numeric_value))
+					(arithmetic_operator)
+					(value_expression (numeric_value))
+			)
+		)
+	)
+)
+
+===============
+Print Statement
+===============
+
+{
+	print "Hello World";
+}
+
+---
+
+(source_file
+	(block
+		(print_statement
+			(string_value)
+		)
+	)
+)
+
+===============
+While Statement
+===============
+
+{
+	while test < 10 {
+		print "Hello World";
+	};
+}
+
+---
+
+(source_file
+	(block
+		(while_statement
+			(comparison_expression
+				(value_expression (identifier))
+				(comparison_operator)
+				(value_expression (numeric_value))
+			)
+			(block
+				(print_statement (string_value))
+			)
+		)
+	)
+)
+
+
+============
+If Statement
+============
+
+{
+	if test < 10 {
+		print "Hello World";
+	} elif test >= 5 {
+		print "Test";
+	} else {
+		print "Else";
+	};
+}
+
+---
+
+(source_file
+	(block
+		(if_statement
+			(comparison_expression 
+				(value_expression (identifier))
+				(comparison_operator)
+				(value_expression (numeric_value))
+			)
+			(block
+				(print_statement (string_value))
+			)
+			(elif_statement
+				(comparison_expression
+					(value_expression (identifier))
+					(comparison_operator)
+					(value_expression (numeric_value))
+				)
+				(block
+					(print_statement (string_value))
+				)
+			)
+			(else_statement
+				(block
+					(print_statement (string_value))
+				)
+			)
+		)
+	)
+)
