@@ -34,7 +34,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_type"
+          "name": "data_type"
         },
         {
           "type": "STRING",
@@ -96,7 +96,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_type"
+          "name": "data_type"
         },
         {
           "type": "STRING",
@@ -125,7 +125,7 @@
         }
       ]
     },
-    "_type": {
+    "data_type": {
       "type": "CHOICE",
       "members": [
         {

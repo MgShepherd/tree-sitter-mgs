@@ -10,7 +10,10 @@
         "mgs"
       ],
       "injection-regex": "^mgs$",
-      "class-name": "TreeSitterMgs"
+      "class-name": "TreeSitterMgs",
+      "highlights": [
+        "queries/highlights.scm"
+      ]
     }
   ],
   "metadata": {

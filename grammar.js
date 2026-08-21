@@ -19,7 +19,7 @@ export default grammar({
       '(',
       ')',
       '->',
-      $._type,
+      $.data_type,
       '{',
       repeat($._statement),
       '}',
@@ -39,7 +39,7 @@ export default grammar({
     declaration_statement: $ => seq(
       $.identifier,
       ':',
-      $._type,
+      $.data_type,
       '=',
       $._expr,
       ';',
@@ -50,7 +50,7 @@ export default grammar({
       $.numeric_lit,
     ),
 
-    _type: _ => choice(
+    data_type: _ => choice(
       'i32',
     ),
 

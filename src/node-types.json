@@ -1,5 +1,10 @@
 [
   {
+    "type": "data_type",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "declaration_statement",
     "named": true,
     "fields": {},
@@ -7,6 +12,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "data_type",
+          "named": true
+        },
         {
           "type": "identifier",
           "named": true
@@ -26,6 +35,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "data_type",
+          "named": true
+        },
         {
           "type": "declaration_statement",
           "named": true
