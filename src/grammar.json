@@ -63,6 +63,10 @@
         {
           "type": "SYMBOL",
           "name": "declaration_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "assignment_statement"
         }
       ]
     },
@@ -95,8 +99,41 @@
           "value": ":"
         },
         {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "var"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
           "type": "SYMBOL",
           "name": "data_type"
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_expr"
+        },
+        {
+          "type": "STRING",
+          "value": ";"
+        }
+      ]
+    },
+    "assignment_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
         },
         {
           "type": "STRING",
@@ -117,11 +154,41 @@
       "members": [
         {
           "type": "SYMBOL",
+          "name": "term_expr"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "arithmetic_expr"
+        }
+      ]
+    },
+    "term_expr": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
           "name": "identifier"
         },
         {
           "type": "SYMBOL",
           "name": "numeric_lit"
+        }
+      ]
+    },
+    "arithmetic_expr": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "term_expr"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "arithmetic_op"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_expr"
         }
       ]
     },
@@ -134,13 +201,26 @@
         }
       ]
     },
+    "arithmetic_op": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "+"
+        },
+        {
+          "type": "STRING",
+          "value": "-"
+        }
+      ]
+    },
     "identifier": {
       "type": "PATTERN",
       "value": "[a-zA-Z]+[a-zA-Z0-9_]*"
     },
     "numeric_lit": {
       "type": "PATTERN",
-      "value": "[0-9]+"
+      "value": "[+-]?[0-9]+"
     }
   },
   "extras": [

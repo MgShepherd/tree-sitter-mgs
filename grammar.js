@@ -28,6 +28,7 @@ export default grammar({
     _statement: $ => choice(
       $.return_statement,
       $.declaration_statement,
+      $.assignment_statement,
     ),
 
     return_statement: $ => seq(
@@ -39,23 +40,47 @@ export default grammar({
     declaration_statement: $ => seq(
       $.identifier,
       ':',
+      optional('var'),
       $.data_type,
       '=',
       $._expr,
       ';',
     ),
 
+    assignment_statement: $ => seq(
+      $.identifier,
+      '=',
+      $._expr,
+      ';',
+    ),
+
     _expr: $ => choice(
+      $.term_expr,
+      $.arithmetic_expr,
+    ),
+
+    term_expr: $ => choice(
       $.identifier,
       $.numeric_lit,
+    ),
+
+    arithmetic_expr: $ => seq(
+      $.term_expr,
+      $.arithmetic_op,
+      $._expr,
     ),
 
     data_type: _ => choice(
       'i32',
     ),
 
+    arithmetic_op: _ => choice(
+      '+',
+      '-',
+    ),
+
     identifier: _ => /[a-zA-Z]+[a-zA-Z0-9_]*/,
 
-    numeric_lit: _ => /[0-9]+/,
+    numeric_lit: _ => /[+-]?[0-9]+/,
   }
 });
