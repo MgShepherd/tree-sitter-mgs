@@ -56,31 +56,38 @@ export default grammar({
 
     _expr: $ => choice(
       $.term_expr,
-      $.arithmetic_expr,
+      $.compound_expr,
     ),
 
     term_expr: $ => choice(
       $.identifier,
       $.numeric_lit,
+      $.bool_lit,
     ),
 
-    arithmetic_expr: $ => seq(
+    compound_expr: $ => seq(
       $.term_expr,
-      $.arithmetic_op,
+      $.op,
       $._expr,
     ),
 
     data_type: _ => choice(
       'i32',
+      'bool',
     ),
 
-    arithmetic_op: _ => choice(
+    op: _ => choice(
       '+',
       '-',
     ),
 
-    identifier: _ => /[a-zA-Z]+[a-zA-Z0-9_]*/,
+    identifier: _ => /[a-zA-Z_]+[a-zA-Z0-9_]*/,
 
     numeric_lit: _ => /[+-]?[0-9]+/,
+
+    bool_lit: _ => choice(
+      'true',
+      'false',
+    ),
   }
 });
