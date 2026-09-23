@@ -1,6 +1,8 @@
 "func" @keyword
 "return" @keyword
 "var" @keyword
+"if" @keyword
+"else" @keyword
 "+" @operator
 "-" @operator
 (data_type) @type

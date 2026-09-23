@@ -20,6 +20,10 @@ export default grammar({
       ')',
       '->',
       $.data_type,
+      $._code_block,
+    ),
+
+    _code_block: $ => seq(
       '{',
       repeat($._statement),
       '}',
@@ -29,6 +33,7 @@ export default grammar({
       $.return_statement,
       $.declaration_statement,
       $.assignment_statement,
+      $.if_block,
     ),
 
     return_statement: $ => seq(
@@ -52,6 +57,28 @@ export default grammar({
       '=',
       $._expr,
       ';',
+    ),
+
+    _if_branch: $ => seq(
+      'if',
+      $._expr,
+      $._code_block,
+    ),
+
+    _else_if_branch: $ => seq(
+      'else',
+      $._if_branch,
+    ),
+
+    _else_branch: $ => seq(
+      'else',
+      $._code_block,
+    ),
+
+    if_block: $ => seq(
+      $._if_branch,
+      repeat($._else_if_branch),
+      optional($._else_branch),
     ),
 
     _expr: $ => choice(
@@ -79,6 +106,10 @@ export default grammar({
     op: _ => choice(
       '+',
       '-',
+      '<',
+      '>',
+      '<=',
+      '>=',
     ),
 
     identifier: _ => /[a-zA-Z_]+[a-zA-Z0-9_]*/,
