@@ -10,6 +10,8 @@
 export default grammar({
   name: "mgs",
 
+  extras: $ => [/\s/, $.directive],
+
   rules: {
     source_file: $ => repeat($.function),
 
@@ -120,5 +122,7 @@ export default grammar({
       'true',
       'false',
     ),
+
+    directive: _ => token(seq('--', optional(/\s/), choice('TEST', 'EXPECTED_STATUS_CODE', 'EXPECTED_COMPILATION_ERROR'), /.*/)),
   }
 });

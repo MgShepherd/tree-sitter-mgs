@@ -342,12 +342,61 @@
           "value": "false"
         }
       ]
+    },
+    "directive": {
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "--"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "PATTERN",
+                "value": "\\s"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "TEST"
+              },
+              {
+                "type": "STRING",
+                "value": "EXPECTED_STATUS_CODE"
+              },
+              {
+                "type": "STRING",
+                "value": "EXPECTED_COMPILATION_ERROR"
+              }
+            ]
+          },
+          {
+            "type": "PATTERN",
+            "value": ".*"
+          }
+        ]
+      }
     }
   },
   "extras": [
     {
       "type": "PATTERN",
       "value": "\\s"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "directive"
     }
   ],
   "conflicts": [],

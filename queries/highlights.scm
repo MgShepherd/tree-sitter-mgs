@@ -9,3 +9,4 @@
 (numeric_lit) @number
 (identifier) @variable
 (bool_lit) @keyword
+(directive) @comment @spell
