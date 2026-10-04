@@ -260,6 +260,10 @@
         {
           "type": "SYMBOL",
           "name": "bool_lit"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "func_call"
         }
       ]
     },
@@ -280,6 +284,23 @@
         }
       ]
     },
+    "func_call": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
     "data_type": {
       "type": "CHOICE",
       "members": [
@@ -290,6 +311,10 @@
         {
           "type": "STRING",
           "value": "bool"
+        },
+        {
+          "type": "STRING",
+          "value": "void"
         }
       ]
     },

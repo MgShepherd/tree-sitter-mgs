@@ -92,6 +92,7 @@ export default grammar({
       $.identifier,
       $.numeric_lit,
       $.bool_lit,
+      $.func_call,
     ),
 
     compound_expr: $ => seq(
@@ -100,9 +101,16 @@ export default grammar({
       $._expr,
     ),
 
+    func_call: $ => seq(
+      $.identifier,
+      '(',
+      ')',
+    ),
+
     data_type: _ => choice(
       'i32',
       'bool',
+      'void',
     ),
 
     op: _ => choice(
@@ -122,7 +130,6 @@ export default grammar({
       'true',
       'false',
     ),
-
     directive: _ => token(seq('--', optional(/\s/), choice('TEST', 'EXPECTED_STATUS_CODE', 'EXPECTED_COMPILATION_ERROR'), /.*/)),
   }
 });
