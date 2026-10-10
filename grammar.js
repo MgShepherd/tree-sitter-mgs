@@ -19,10 +19,17 @@ export default grammar({
       'func',
       $.identifier,
       '(',
+      optional(seq($.parameter, repeat(seq(',', $.parameter)))),
       ')',
       '->',
       $.data_type,
       $._code_block,
+    ),
+
+    parameter: $ => seq(
+      $.identifier,
+      ':',
+      $.data_type,
     ),
 
     _code_block: $ => seq(
@@ -104,6 +111,7 @@ export default grammar({
     func_call: $ => seq(
       $.identifier,
       '(',
+      optional(seq($._expr, repeat(seq(',', $.parameter)))),
       ')',
     ),
 
