@@ -389,7 +389,19 @@
       "members": [
         {
           "type": "STRING",
+          "value": "i8"
+        },
+        {
+          "type": "STRING",
+          "value": "i16"
+        },
+        {
+          "type": "STRING",
           "value": "i32"
+        },
+        {
+          "type": "STRING",
+          "value": "i64"
         },
         {
           "type": "STRING",

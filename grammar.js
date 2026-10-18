@@ -116,7 +116,10 @@ export default grammar({
     ),
 
     data_type: _ => choice(
+      'i8',
+      'i16',
       'i32',
+      'i64',
       'bool',
       'void',
     ),

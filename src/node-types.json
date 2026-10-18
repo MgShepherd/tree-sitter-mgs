@@ -343,7 +343,19 @@
     "named": false
   },
   {
+    "type": "i16",
+    "named": false
+  },
+  {
     "type": "i32",
+    "named": false
+  },
+  {
+    "type": "i64",
+    "named": false
+  },
+  {
+    "type": "i8",
     "named": false
   },
   {
