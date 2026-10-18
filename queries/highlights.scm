@@ -5,7 +5,7 @@
 "else" @keyword
 "+" @operator
 "-" @operator
-(data_type) @type
+(primitive_type) @type
 (numeric_lit) @number
 (identifier) @variable
 (bool_lit) @keyword

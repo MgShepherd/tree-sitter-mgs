@@ -100,6 +100,7 @@ export default grammar({
       $.numeric_lit,
       $.bool_lit,
       $.func_call,
+      $.array_lit,
     ),
 
     compound_expr: $ => seq(
@@ -111,11 +112,28 @@ export default grammar({
     func_call: $ => seq(
       $.identifier,
       '(',
-      optional(seq($._expr, repeat(seq(',', $.parameter)))),
+      optional(seq($._expr, repeat(seq(',', $._expr)))),
       ')',
     ),
 
-    data_type: _ => choice(
+    array_lit: $ => seq(
+      '[',
+      optional(seq($._expr, repeat(seq(',', $._expr)))),
+      ']',
+    ),
+
+    data_type: $ => choice(
+      $.primitive_type,
+      $.array_type,
+    ),
+
+    array_type: $ => seq(
+      '[',
+      ']',
+      $.data_type
+    ),
+
+    primitive_type: _ => choice(
       'i8',
       'i16',
       'i32',
