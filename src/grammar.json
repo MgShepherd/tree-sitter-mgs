@@ -13,12 +13,16 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "func"
-        },
-        {
           "type": "SYMBOL",
           "name": "identifier"
+        },
+        {
+          "type": "STRING",
+          "value": ":"
+        },
+        {
+          "type": "STRING",
+          "value": "func"
         },
         {
           "type": "STRING",

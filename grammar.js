@@ -16,8 +16,9 @@ export default grammar({
     source_file: $ => repeat($.function),
 
     function: $ => seq(
-      'func',
       $.identifier,
+      ':',
+      'func',
       '(',
       optional(seq($.parameter, repeat(seq(',', $.parameter)))),
       ')',
