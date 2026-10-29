@@ -13,7 +13,7 @@ export default grammar({
   extras: $ => [/\s/, $.directive],
 
   rules: {
-    source_file: $ => repeat($.function),
+    source_file: $ => repeat(choice($.function, $.type_definition)),
 
     function: $ => seq(
       $.identifier,
@@ -25,6 +25,16 @@ export default grammar({
       '->',
       $.data_type,
       $._code_block,
+    ),
+
+    type_definition: $ => seq(
+      $.identifier,
+      ':',
+      'struct',
+      '{',
+      optional(seq($.parameter, repeat(seq(',', $.parameter)))),
+      '}',
+      ';'
     ),
 
     parameter: $ => seq(
@@ -102,6 +112,7 @@ export default grammar({
       $.bool_lit,
       $.func_call,
       $.array_lit,
+      $.struct_lit,
     ),
 
     compound_expr: $ => seq(
@@ -123,9 +134,22 @@ export default grammar({
       ']',
     ),
 
+    field_assignment: $ => seq(
+      $.identifier,
+      '=',
+      $._expr,
+    ),
+
+    struct_lit: $ => seq(
+      '{',
+      optional(seq($.field_assignment, repeat(seq(',', $.field_assignment)))),
+      '}',
+    ),
+
     data_type: $ => choice(
       $.primitive_type,
       $.array_type,
+      $.identifier,
     ),
 
     array_type: $ => seq(
