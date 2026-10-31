@@ -1,4 +1,5 @@
 "func" @keyword
+"struct" @keyword
 "return" @keyword
 "var" @keyword
 "if" @keyword
